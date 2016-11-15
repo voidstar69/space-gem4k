@@ -1,0 +1,6 @@
+Kilobytes	Feature
+=====	    =======
+2.24 	    Initial version
+2.14      Removed code for randomisation and right mouse button
+2.48      Added toolbar and Waldo special-case, and started simulation of each Waldo step
+[See Progress.txt for further sizes]

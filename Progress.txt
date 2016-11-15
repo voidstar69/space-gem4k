@@ -1,0 +1,112 @@
+Space Gems 4K
+A clone of SpaceChem for the Java4K compo
+=========================================
+Total time spent: 17 hours over 4 days.
+
+23 December 2013 [6.5 hours]
+----------------
+Time  KB    Comment
+----  --    -------
+09:30 ???   Cloned SideShooter 4K game to use as a base.
+10:00 ???   Tried to figure out why NetBeans cannot see Main method in Applet class. Talked to Anna lots.
+10:30 ???   Stripped down SideShooter game to simply show a grid, and allow placement of red blocks.
+11:00 ???   Experimented with keyboard support vs mouse support. Failed to prevent out-of-bounds exception.
+11:30 2.48  Created a toolbar of operations that can be placed onto the grid. Prevented the toolbar from being overwritten. Kept track of the last Waldo Start placed.
+12:00 3.10  Simulated stepping of Waldo movement. Waldo moves to the left.
+12:20 2.98  Fought with out of bounds bug, and discovered that debugging does not work! Commented out code to find the bug.
+12:30 2.27  Removed HTML page embedded in JAR, and also Main method. A strange G$Blah.class then vanished from the JAR, making it much smaller!
+13:00 2.04  Added functioning direction operations. Moved all private final members into the run method as final variables, reducing the JAR size.
+13:20 2.04  Noticed that Java applets are blocked from running locally by all browsers. Put SpaceGem4K onto DropBox, and it runs after prompting the user.
+13:20 to 14:30 Lunch break. Bought some games on Steam.
+15:00 2.10  Setup initial debug scene with operations, moving Waldo in a loop. Considered best data-structure for representing gems. Added gem type and gem group 2D arrays.
+15:30 2.24/3.41 ADDED DEBUG INFO which bloats the JAR. Made Waldo capable of dragging groups of gems around (with some out of bounds crashes!)
+16:00 2.29/3.69 Fixed bug where gems overwrite other gems, and gems jump to right and bottom bounds.
+16:30 2.28/3.75 Added operator for Waldo to Put (i.e. drop) gems. Fixed gem double-buffering bug.
+17:00 2.48/4.09 Added operator for Waldo to Take (i.e. pickup) gems. Added Input operator. Each new set of gems have a different group.
+
+
+27 December 2013 [3 hours]
+----------------
+Time  KB/Debug  Comment
+----  --------  -------
+18:40 to
+19:00 2.58/4.32 Verified gems being output.
+19:40 2.69/4.49 Draw warning cross when wrong gems are output.
+20:00 2.72/4.54 Display input and output zones as transparent rectangles.
+20:45 2.77/4.67 Draw warning cross when gems collide on movement or input. Added speed tool for debugging. Setup example path for win. Counted number of gem clusters that are output.
+20:45 to 21:05 Started making dinner
+21:30 2.84/???  Allowed for multiple levels, and added a second level. Experimented with drawing the gems with 3D rectangles.
+21:30 Ate dinner and shopped for groceries.
+
+
+28 December 2013 [3.5 hours]
+----------------
+Time  KB/Debug  Comment
+----  --------  -------
+13:25 to
+13:45 2.87/???  Made zones cover only grid lines, and more transparent. Draw gems as rounded rectangles.
+14:00 2.87/???  Experimented with storing level input and expected output as strings rather than array of strings. JAR size increased, so reverted this.
+14:35 2.94/???  Added second input zone/operation. Added second input gems to both levels.
+14:35 to 14:50  Spoke with Anna
+15:15 2.94/???  Made toolbar wider to fit in more operators. Fixed positioning of output zone.
+15:45 3.11/???  Allowed gem clusters to be bonded together, although boundary issues might occur.
+16:00 3.12/???  Displayed second input zone. Moved zones to background, removed transparency and made much darker.
+16:10 3.15/???  Allow gem under Waldo to be unbonded from surrounding gems.
+16:30 3.21/???  Warnings cause the level to reset instantly - operators remain in level.
+16:50 3.27/???  Warnings cause the level to pause, and then reset after a few seconds.
+17:00 3.30/???  Added another level. Fixed bug when adding bond and no gem under Waldo.
+17:10 3.33/???  Changed example path to solve new first level.
+
+
+28 February 2014 [4 hours]
+----------------
+Time  KB/Debug  Comment
+----  --------  -------
+19:10 to
+19:40 ???       Figured out source code. Changed level 2 to work with debug path. Showed target number of gems to output on level.
+20:20 3.31      Restricted grid from right side of view. Displayed desired gem cluster pattern off-grid to the right. Added debug mode flag.
+20:40 3.54      Added non-debug text to right side of view. Made all text larger and bold. Turned waldo into a large circle drawn under gems.
+20:40 - 21:20   Dinner
+21:30 3.57      Procedurally generated different colour hues for different types of gems.
+21:50 3.58      Tweaked gem colours to avoid red gems made invisible over red operation tiles.
+22:10 3.56      Tweaked harder level. Added trivial intro level. Noted that debug flag adds about 0.2KB to JAR size!
+22:25 3.58      Added another easy level, and tested it.
+23:10 3.71      Added some medium and hard levels, and tested them. Discovered bonding at boundary causes a hang!
+23:55           Submitted SpaceGem4k to the Java4k contest.
+
+
+Text for contest entry
+----------------------
+Game story/description:
+
+You have recently become the proud owner of the only "Gem Embedding Machine" in the whole world! This machine could make you and your jewellery business rich beyond your wildest dreams! Now if only you can figure out how to operate this complicated machine...
+
+This is a tribute to the fantastic SpaceGem game by Zachary Barth (founder of Zachtronics Industries). Zach was once quoted as saying that SpaceChem would have sold many more copies if it had been about gems instead of chemistry!
+
+Zach, thanks for inventing SpaceChem. The world is a better place for it.    :-)
+
+
+Instructions/Input:
+
+Use your mouse to click on the toolbar at the top, to select operations. Click on the grid to place an operation in a grid square. The always-moving 'Waldo' will obey every operation that it passes on the grid.
+
+Key to the operations:
+
+W = Waldo start location. The Waldo will always start from this operation and move towards the left.
+(blank) - Use this to erase unnecessary operations from the grid.
+U = Move up
+D = Move down
+L = Move left
+R = Move right
+T = Take gems. The Waldo will grab hold of any gem in this grid square, and move it and any joined gems around the grid.
+P = Put gems. The Waldo will drop any gems that it was holding, and leave them at their current location on the grid.
+1 = Call in some gems into Input One Zone (the purple zone in the top-left corner of the grid).
+2 = Call in some gems into Input Two Zone (the cyan zone in the bottom-left corner of the grid).
+O = Send out any gems in the Output Zone (the yellow zone in the top-right corner of the grid).
++ = Bond any gem held by the Waldo with any neighbouring gems (above, below or to the side of the Waldo).
+- = Break bonds between the gem held by the Waldo and any neighbouring gems.
+
+Work your way through seven levels of increasing difficulty. On each level you need to send three gem clusters to the Output Pipe, in exactly the desired configuration shown at the far right!
+
+Warning:
+Do not allow the Waldo or any gems to hit the boundary of the grid! Do not allow any gems to collide with other gems! Do not call in gems over other gems! Gems that are sent out must match the desired pattern exactly, and lie in the output grid in the exact same location as shown in the pattern! If you make any of these mistakes, the GEM machine will reset itself, and blindly attempt to repeat the operations from the beginning...
